@@ -20,7 +20,6 @@ public class OrderDetailsDao {
     public OrderDetailsModel save(OrderDetailsDto dto) {
         return repository.save(new OrderDetailsModel(
                 dto.getId(),
-                dto.getName(),
                 dto.getPrice(),
                 dto.getQuantity(),
                 orderRepository.getById(dto.getOrderId()),

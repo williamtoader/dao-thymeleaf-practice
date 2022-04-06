@@ -14,8 +14,6 @@ public class OrderDetailsDto {
     private Long orderId;
 
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
-    private String name;
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private Float price;
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private Long quantity;

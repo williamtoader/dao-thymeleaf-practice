@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 public class OrderDetailsModel {
-    public OrderDetailsModel(Long id,String name, Float price, Long quantity, OrderModel orderModel, ProductModel productModel) {
+    public OrderDetailsModel(Long id, Float price, Long quantity, OrderModel orderModel, ProductModel productModel) {
         this.id = id;
         this.price = price;
         this.quantity = quantity;
