@@ -5,17 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Id;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDto {
-    @JsonProperty(access = JsonProperty.Access.AUTO)
-    private Long id;
-
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
-    private String name;
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
-    private Float price;
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
-    private Long quantity;
+    String productCode;
+    String productName;
+    Float productPrice;
 }

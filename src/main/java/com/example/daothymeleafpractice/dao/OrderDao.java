@@ -3,6 +3,7 @@ package com.example.daothymeleafpractice.dao;
 import com.example.daothymeleafpractice.model.OrderModel;
 import com.example.daothymeleafpractice.repositories.CustomerRepository;
 import com.example.daothymeleafpractice.repositories.OrderRepository;
+import com.example.daothymeleafpractice.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,9 @@ import java.util.List;
 public class OrderDao {
     OrderRepository repository;
     CustomerRepository customerRepository;
+    ProductRepository productRepository;
 
-    public OrderModel create(Long customerId) {
+    public OrderModel save(Long customerId) {
         return repository.save(new OrderModel(customerRepository.getById(customerId)));
     }
 

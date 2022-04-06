@@ -1,6 +1,7 @@
 package com.example.daothymeleafpractice.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderModel {
@@ -24,6 +26,6 @@ public class OrderModel {
     @ManyToOne
     CustomerModel customerModel;
 
-    @ManyToMany
-    Set<ProductModel> productModelList;
+    @OneToMany
+    Set<OrderDetailsModel> orderDetailsModels;
 }

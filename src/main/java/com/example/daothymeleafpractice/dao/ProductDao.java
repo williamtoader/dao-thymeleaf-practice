@@ -10,33 +10,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
+@RequiredArgsConstructor
 public class ProductDao {
-    @Service
-    @RequiredArgsConstructor
-    public class OrderDao {
-        ProductRepository repository;
-        OrderRepository orderRepository;
+    ProductRepository repository;
+    public ProductModel save(ProductDto dto) {
+        return repository.save(new ProductModel(dto.getProductCode(), dto.getProductName(), dto.getProductPrice()));
+    }
 
-        public ProductModel create(ProductDto dto) {
-            return repository.save(new ProductModel(
-                    dto.getId(),
-                    dto.getName(),
-                    dto.getPrice(),
-                    dto.getQuantity()
-            ));
-        }
+    public void delete(String productCode) {
+        repository.deleteById(productCode);
+    }
 
-        public void delete(Long id) {
-            repository.deleteById(id);
-        }
-
-        public ProductModel get(Long id) {
-            return repository.getById(id);
-        }
-
-        public List<ProductModel> getAllByOrderId(Long id) {
-            return repository.fi
-        }
+    public ProductModel get(String productCode) {
+        return repository.getById(productCode);
     }
 }

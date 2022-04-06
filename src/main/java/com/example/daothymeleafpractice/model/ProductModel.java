@@ -6,23 +6,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class ProductModel {
-    public ProductModel(Long id, String name, Float price, Long quantity) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+    public ProductModel(String productCode, String productName, Float productPrice) {
+        this.productCode = productCode;
+        this.productName = productName;
+        this.productPrice = productPrice;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private Float price;
-    private Long quantity;
+    String productCode;
+
+    String productName;
+    Float productPrice;
+
+    @OneToMany
+    Set<OrderDetailsModel> orderDetailsModels;
 }
