@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto {
-    @JsonProperty(access = JsonProperty.Access.AUTO)
+    @JsonProperty()
     private Long customerId;
 }

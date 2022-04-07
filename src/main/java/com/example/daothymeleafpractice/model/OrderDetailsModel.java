@@ -1,13 +1,14 @@
 package com.example.daothymeleafpractice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@ToString
 @Data
 public class OrderDetailsModel {
     public OrderDetailsModel(Long id, Float price, Long quantity, OrderModel orderModel, ProductModel productModel) {

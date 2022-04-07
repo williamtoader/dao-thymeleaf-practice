@@ -1,14 +1,14 @@
 package com.example.daothymeleafpractice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@ToString
 
 public class CustomerModel {
     public CustomerModel(Long id, String name, String username, String country, String city) {
@@ -21,7 +21,6 @@ public class CustomerModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
     private String name;
 
@@ -31,14 +30,4 @@ public class CustomerModel {
 
     @OneToMany
     List<OrderModel> orderModelList;
-
-    @Override
-    public String toString() {
-        return "CustomerModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", country='" + country + '\'' +
-                ", city='" + city;
-    }
 }

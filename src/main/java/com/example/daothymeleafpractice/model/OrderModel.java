@@ -1,12 +1,8 @@
 package com.example.daothymeleafpractice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,6 +10,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class OrderModel {
     public OrderModel(CustomerModel customerModel) {
         this.customerModel = customerModel;

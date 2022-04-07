@@ -1,15 +1,15 @@
 package com.example.daothymeleafpractice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @NoArgsConstructor
+@ToString
 @Data
 public class ProductModel {
     public ProductModel(String productCode, String productName, Float productPrice) {

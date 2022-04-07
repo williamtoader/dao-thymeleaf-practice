@@ -4,6 +4,7 @@ import com.example.daothymeleafpractice.dto.CustomerDto;
 import com.example.daothymeleafpractice.model.CustomerModel;
 import com.example.daothymeleafpractice.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CustomerDao {
+    @Autowired
     CustomerRepository repository;
 
     public CustomerModel save(CustomerDto dto) {
@@ -33,5 +35,15 @@ public class CustomerDao {
 
     public List<CustomerModel> getAll() {
         return repository.findAll();
+    }
+
+    public List<CustomerModel> getAllByUsername(String username) {
+        return repository.findAllByUsername(username);
+    }
+    public List<CustomerModel> getAllByCountry(String country) {
+        return repository.findAllByCity(country);
+    }
+    public List<CustomerModel> getAllByCity(String city) {
+        return repository.findAllByCity(city);
     }
 }

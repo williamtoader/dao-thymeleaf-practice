@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDto {
-    @JsonProperty(access = JsonProperty.Access.AUTO)
+    @JsonProperty()
     private Long id;
 
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
