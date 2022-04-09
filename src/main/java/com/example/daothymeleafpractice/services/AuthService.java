@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -16,6 +17,12 @@ import java.util.UUID;
 public class AuthService {
     @Autowired
     AuthEntityRepository authEntityRepository;
+
+    public final String COOKIE_SECURITY_DOMAIN = "localhost";
+    public final Boolean COOKIE_SECURITY_HTTPS_ENABLE = true;
+
+    // Max age set to 86400 seconds = 24 hours
+    public final Integer COOKIE_SECURITY_MAX_AGE = 86400;
 
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
@@ -56,8 +63,17 @@ public class AuthService {
             AuthEntityModel user = modelOptional.get();
             UUID sessionId = UUID.randomUUID();
             user.setActiveSession(sessionId);
+            authEntityRepository.save(user);
             return sessionId;
         }
         return null;
+    }
+
+    public Cookie setCookieSecurity(Cookie cookie) {
+        cookie.setDomain(COOKIE_SECURITY_DOMAIN);
+        cookie.setSecure(COOKIE_SECURITY_HTTPS_ENABLE);
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(COOKIE_SECURITY_MAX_AGE);
+        return cookie;
     }
 }
