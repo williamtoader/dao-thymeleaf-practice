@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -35,5 +38,26 @@ public class AuthService {
             return user.validatePassword(dto.getPlainTextPassword());
         }
         return false;
+    }
+
+    public Boolean checkSession(String username, UUID sessionId) {
+        Optional<AuthEntityModel> modelOptional = authEntityRepository.findById(username);
+        if(modelOptional.isPresent()) {
+            AuthEntityModel user = modelOptional.get();
+            return  user.getActiveSession().equals(sessionId) &&
+                    user.getActiveSessionExpiryDate().after(Date.valueOf(LocalDate.now()));
+        }
+        return false;
+    }
+
+    public UUID startSession(String username) {
+        Optional<AuthEntityModel> modelOptional = authEntityRepository.findById(username);
+        if(modelOptional.isPresent()) {
+            AuthEntityModel user = modelOptional.get();
+            UUID sessionId = UUID.randomUUID();
+            user.setActiveSession(sessionId);
+            return sessionId;
+        }
+        return null;
     }
 }
