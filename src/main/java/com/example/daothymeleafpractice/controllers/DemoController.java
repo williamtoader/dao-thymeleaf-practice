@@ -39,6 +39,7 @@ public class DemoController{
             @CookieValue(value = "USERNAME", defaultValue = "") String authUsername,
             @CookieValue(value = "SESSION_ID", defaultValue = "") String authSession
     ){
+        if(authUsername.equals("") || authSession.equals("")) return null;
         if(!authService.checkSession(authUsername, UUID.fromString(authSession)))
             return null;
         ModelAndView modelAndView = new ModelAndView("display-orders");
@@ -55,6 +56,7 @@ public class DemoController{
             @Nullable @RequestParam String city,
             @Nullable @RequestParam String username
     ){
+        if(authUsername.equals("") || authSession.equals("")) return null;
         if(!authService.checkSession(authUsername, UUID.fromString(authSession)))
             return null;
         List<CustomerModel> customerModels;
