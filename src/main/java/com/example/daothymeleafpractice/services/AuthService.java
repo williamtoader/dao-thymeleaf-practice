@@ -19,7 +19,7 @@ public class AuthService {
     AuthEntityRepository authEntityRepository;
 
     public final String COOKIE_SECURITY_DOMAIN = "localhost";
-    public final Boolean COOKIE_SECURITY_HTTPS_ENABLE = true;
+    public final Boolean COOKIE_SECURITY_HTTPS_ENABLE = false;
 
     // Max age set to 86400 seconds = 24 hours
     public final Integer COOKIE_SECURITY_MAX_AGE = 86400;
